@@ -23,7 +23,7 @@ namespace IS_Project.Models
         public virtual Pacientas FkPacientas { get; set; }
         public virtual Vaistas FkVaistas { get; set; }
 
-        public IList<SelectListItem> VaistasList { get; set; }
-        public IList<SelectListItem> PacientasList { get; set; }
+        //public IList<SelectListItem> VaistasList { get; set; }
+        //public IList<SelectListItem> PacientasList { get; set; }
     }
 }

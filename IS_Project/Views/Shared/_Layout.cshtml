@@ -63,8 +63,11 @@
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li>@Html.ActionLink("Receptų peržiūros langas", "Index", "Recipe")</li>
-                            <li>@Html.ActionLink("Pridėti receptą", "Create", "Recipe")</li>
+                            <li>@Html.ActionLink("Receptų peržiūros langas", "Index", "RecipeSubsystem")</li>
+                            <li>@Html.ActionLink("Pridėti receptą", "Create", "RecipeSubsystem")</li>
+                            <li>@Html.ActionLink("Ieškoti vartotojo", "SearchPatient", "RecipeSubsystem")</li>
+                            <li>@Html.ActionLink("Tikrinti ar pacientas alergiškas", "CheckAlergy", "RecipeSubsystem")</li>
+
                         </ul>
                     </li>
                 </ul>
@@ -98,6 +101,7 @@
             //Inicijuojami datos ir laiko pasirinkimo įvedimo elementai
             $(".date-picker").datepicker({ dateFormat: 'yy-mm-dd' });
             $(".datetime-picker").datetimepicker({ format: 'Y-m-d h:i' });
+            //$(".time-picker").({ format: 'h:i' });
 
             //Iniciajuojamas datatable (skirtas rikiuoti ieskoti ir panašiai)
             /*$(".datatable").DataTable({

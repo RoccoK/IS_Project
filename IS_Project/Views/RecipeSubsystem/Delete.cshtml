@@ -1,0 +1,66 @@
+﻿@model IS_Project.Models.Receptas
+
+@{
+    ViewBag.Title = "Remove";
+}
+
+<h2>Šalinti receptą</h2>
+
+<h3>Ar tikrai norite pašalinti šį receptą?</h3>
+<div>
+    <h4>Receptas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReceptoNr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReceptoNr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FkVaistasId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FkVaistasId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FkPacientasId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FkPacientasId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Laikas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Laikas)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        @Html.ActionLink("Atgal į sarašą", "Index", "RecipeSubSystem", new { @class = "btn btn-default" })
+        <input type="submit" value="Šalinti" class="btn btn-danger" />
+    </div>
+    }
+</div>

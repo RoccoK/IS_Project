@@ -4,15 +4,20 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Receptai</h2>
+<h2>Receptų peržiūros langas</h2>
 
-
+@using (Html.BeginForm("Index", "RecipeSubsystem"))
+{
     <p>
-        <div class="form-group">
+        <div class="form-inline">
+            <label for="remedy">Vaistas</label>
+            <input type="text" placeholder="Morphine" name="remedy"  class="form-control"> &nbsp;
+            <label for="date">Data</label>
+            <input type="date" name="date" autocomplete="off" class = "form-control ui-datepicker">
             <input class="btn btn-success" type="submit" value="Atrinkti">
         </div>
     </p>
-
+}
     <table class="table table-striped datatable">
         <tr style="background-color: lightblue">
             <th>
