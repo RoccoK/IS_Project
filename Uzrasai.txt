@@ -1,0 +1,3 @@
+Lentele: receptas
+laukas: recepto_nr 
+pokytis-uzdetas "AUTO_INCREMENT"
