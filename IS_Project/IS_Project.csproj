@@ -290,6 +290,7 @@
     <Content Include="Views\UserSubsystem\SendReminder.cshtml" />
     <Content Include="Views\UserSubsystem\UserLookup.cshtml" />
     <Content Include="Views\UserSubsystem\ViewUserData.cshtml" />
+    <Content Include="Views\UserSubsystem\EditUserData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
