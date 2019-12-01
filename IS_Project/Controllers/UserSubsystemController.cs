@@ -25,5 +25,9 @@ namespace IS_Project.Controllers
         {
             return View();
         }
+        public ActionResult UserLookup()
+        {
+            return View();
+        }
     }
 }

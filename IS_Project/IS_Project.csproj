@@ -288,6 +288,7 @@
     <Content Include="Views\Home\WebPage1.cshtml" />
     <Content Include="Views\UserSubsystem\DeleteUser.cshtml" />
     <Content Include="Views\UserSubsystem\SendReminder.cshtml" />
+    <Content Include="Views\UserSubsystem\UserLookup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
