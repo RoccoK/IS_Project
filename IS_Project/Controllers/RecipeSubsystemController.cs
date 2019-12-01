@@ -92,16 +92,22 @@ namespace IS_Project.Controllers
         // GET: Recepy/Create
         public ActionResult Create()
         {
-
-            return View();
+            ReceptasView receptasView = new ReceptasView();
+            PopulateSections(receptasView);
+            return View(receptasView);
         }
 
         // POST: Recepy/Create
         [HttpPost]
-        public ActionResult Create(Receptas receptas)
+        public ActionResult Create(ReceptasView receptasView)
         {
             try
             {
+                Receptas receptas = new Receptas();
+                receptas.Data = receptasView.Data;
+                receptas.FkPacientasId = receptasView.FkPacientasId;
+                receptas.FkVaistasId = receptasView.FkVaistasId;
+                receptas.Laikas = receptasView.Laikas;
                 ctx.Add(receptas);
                 ctx.SaveChanges();
                 return RedirectToAction("Index");
@@ -115,17 +121,30 @@ namespace IS_Project.Controllers
         // GET: Recepy/Edit/5
         public ActionResult Edit(int id)
         {
-            //Receptas receptas = ctx.Receptas.Find(id);
-            return View(ctx.Receptas.Find(id));
+            ReceptasView receptasView = new ReceptasView();
+            PopulateSections(receptasView);
+            Receptas receptas = ctx.Receptas.Find(id);
+            receptasView.FkVaistasId = receptas.FkVaistasId;
+            receptasView.FkPacientasId = receptas.FkPacientasId;
+            receptasView.Data = receptas.Data;
+            receptasView.Laikas = receptas.Laikas;
+            receptasView.ReceptoNr = receptas.ReceptoNr;
+            return View(receptasView);
         }
 
         // POST: Recepy/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, Receptas receptas)
+        public ActionResult Edit(int id, ReceptasView receptasView)
         {
             try
             {
                 // TODO: Add update logic here
+                Receptas receptas = new Receptas();
+                receptas.ReceptoNr = receptasView.ReceptoNr;
+                receptas.Data = receptasView.Data;
+                receptas.FkPacientasId = receptasView.FkPacientasId;
+                receptas.FkVaistasId = receptasView.FkVaistasId;
+                receptas.Laikas = receptasView.Laikas;
                 ctx.Receptas.Update(receptas);
                 ctx.SaveChanges();
                 return RedirectToAction("Index");
@@ -196,12 +215,20 @@ namespace IS_Project.Controllers
         // GET: Recepy/Delete/5
         public ActionResult Delete(int id)
         {
-            return View(ctx.Receptas.Find(id));
+            ReceptasView receptasView = new ReceptasView();
+            PopulateSections(receptasView);
+            Receptas receptas = ctx.Receptas.Find(id);
+            receptasView.FkVaistasId = receptas.FkVaistasId;
+            receptasView.FkPacientasId = receptas.FkPacientasId;
+            receptasView.Data = receptas.Data;
+            receptasView.Laikas = receptas.Laikas;
+            receptasView.ReceptoNr = receptas.ReceptoNr;
+            return View(receptasView);
         }
 
         // POST: Recepy/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, Receptas receptas)
+        public ActionResult Delete(int id, ReceptasView receptas)
         {
             try
             {
@@ -214,6 +241,25 @@ namespace IS_Project.Controllers
             {
                 return View();
             }
+        }
+
+        public void PopulateSections(ReceptasView receptasView)
+        {
+            var vartotojai = ctx.Vartotojas.ToList();
+            var vaistai = ctx.Vaistas.ToList();
+
+            List<SelectListItem> selectListVartotojai = new List<SelectListItem>();
+            List<SelectListItem> selectListVaistai = new List<SelectListItem>();
+
+            foreach (var item in vaistai)
+                selectListVaistai.Add(new SelectListItem { Value = Convert.ToString(item.VaistasId), Text = item.Pavadinimas });
+            foreach (var item in vartotojai)
+                selectListVartotojai.Add(new SelectListItem { Value = Convert.ToString(item.VartotojasId), Text = item.Vardas + " " + item.Pavarde });
+
+            receptasView.VaistasList = selectListVaistai;
+            receptasView.PacientasList = selectListVartotojai;
+
+
         }
     }
 }

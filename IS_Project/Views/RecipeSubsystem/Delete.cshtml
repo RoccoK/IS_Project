@@ -1,4 +1,4 @@
-﻿@model IS_Project.Models.Receptas
+﻿@model IS_Project.ViewModels.ReceptasView
 
 @{
     ViewBag.Title = "Remove";
@@ -25,7 +25,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FkVaistasId)
+            @Html.DisplayFor(model => model.VaistasList.First(m => m.Value.CompareTo(Convert.ToString(model.FkVaistasId)) == 0).Text)
         </dd>
 
         <dt>
@@ -33,7 +33,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FkPacientasId)
+            @Html.DisplayFor(model => model.PacientasList.First(m => m.Value.CompareTo(Convert.ToString(model.FkPacientasId)) == 0).Text)
         </dd>
 
         <dt>

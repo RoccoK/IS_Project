@@ -248,6 +248,7 @@
     <Compile Include="Models\Zinute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AlergyPerson.cs" />
+    <Compile Include="ViewModels\ReceptasView.cs" />
     <Compile Include="ViewModels\VardasPavarde.cs" />
   </ItemGroup>
   <ItemGroup>

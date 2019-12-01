@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <ItemGroup> <Reference Include="netstandard" /> </ItemGroup>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
@@ -99,7 +100,9 @@
             });
 
             //Inicijuojami datos ir laiko pasirinkimo įvedimo elementai
-            $(".date-picker").datepicker({ dateFormat: 'yy-mm-dd' });
+            $(".date-picker").datepicker({ dateFormat: 'yy-mm-dd', defaultDate: new Date() });
+            $(".date-picker").datepicker("setDate", "-0d");
+            $(".date-picker1").datepicker({ dateFormat: 'yy-mm-dd', defaultDate: new Date() });
             $(".datetime-picker").datetimepicker({ format: 'Y-m-d h:i' });
             //$(".time-picker").({ format: 'h:i' });
 

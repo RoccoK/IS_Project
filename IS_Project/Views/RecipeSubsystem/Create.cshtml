@@ -1,4 +1,4 @@
-﻿@model IS_Project.Models.Receptas
+﻿@model IS_Project.ViewModels.ReceptasView
 
 @{
     ViewBag.Title = "Create";
@@ -18,7 +18,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.FkVaistasId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.FkVaistasId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.FkVaistasId, Model.VaistasList, "--------------", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.FkVaistasId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.FkPacientasId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.FkPacientasId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.FkPacientasId, Model.PacientasList, "--------------", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.FkPacientasId, "", new { @class = "text-danger" })
             </div>
         </div>
