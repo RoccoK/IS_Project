@@ -21,5 +21,9 @@ namespace IS_Project.Controllers
         {
             return View();
         }
+        public ActionResult SendReminder()
+        {
+            return View();
+        }
     }
 }
