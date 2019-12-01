@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "ViewUserData";
+}
+    <head>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #f5f0d8;
+            }
+        </style>
+    </head>
+<h2>Peržiūrėti vartotojo duomenis</h2>
+<body>
+    <table>
+        <tr>
+            <th>Vardas</th>
+            <th>Pavardė</th>
+            <th>Paštas</th>
+            <th>Telefonas</th>
+        </tr>
+        <tr>
+            <td>Vardenis</td>
+            <td>Pavardenis</td>
+            <td>x@ktu.edu</td>
+            <td>+37063334444</td>
+        </tr>
+    </table><br>
+    <table>
+        <tr>
+            <th>Miestas</th>
+            <th>Gatvė</th>
+            <th>Namo nr.</th>
+            <th>Pašto kodas</th>
+            <th>Gimimo metai</th>
+        </tr>
+        <tr>
+            <td>Kaunas</td>
+            <td>Studentų g. 48</td>
+            <td>3</td>
+            <td>44100</td>
+            <td>2000-01-31</td>
+        </tr>
+    </table><br>
+    <form action="/editUserData">
+        <input type="submit" class="btn btn-primary" value="Redaguoti duomenis" />
+    </form>
+    <form action="/deleteUser">
+        <input type="submit" class="btn btn-danger" value="Šalinti" />
+    </form>
+</body>

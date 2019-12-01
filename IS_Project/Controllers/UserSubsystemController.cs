@@ -29,5 +29,9 @@ namespace IS_Project.Controllers
         {
             return View();
         }
+        public ActionResult ViewUserData()
+        {
+            return View();
+        }
     }
 }
