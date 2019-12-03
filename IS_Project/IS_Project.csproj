@@ -247,9 +247,11 @@
     <Compile Include="Models\Vartotojas.cs" />
     <Compile Include="Models\Zinute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\User.cs" />
     <Compile Include="ViewModels\AlergyPerson.cs" />
     <Compile Include="ViewModels\ReceptasView.cs" />
     <Compile Include="ViewModels\VardasPavarde.cs" />
+
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -336,6 +338,11 @@
     <Content Include="Views\UserSubsystem\Index.cshtml" />
     <Content Include="Views\Home\WebPage1.cshtml" />
     <Content Include="Views\UserSubsystem\DeleteUser.cshtml" />
+    <Content Include="Views\UserSubsystem\SendReminder.cshtml" />
+    <Content Include="Views\UserSubsystem\UserLookup.cshtml" />
+    <Content Include="Views\UserSubsystem\ViewUserData.cshtml" />
+    <Content Include="Views\UserSubsystem\EditUserData.cshtml" />
+    <Content Include="Views\UserSubsystem\EditUser.cshtml" />
     <Content Include="Views\RecipeSubsystem\Index.cshtml" />
     <Content Include="Views\RecipeSubsystem\Create.cshtml" />
     <Content Include="Views\RecipeSubsystem\Edit.cshtml" />
@@ -347,6 +354,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\AddUser\" />
     <Folder Include="Views\RegistrationSubsystem\" />
+    <Folder Include="Views\User\" />
     <Folder Include="Views\VisitSubsystem\" />
   </ItemGroup>
   <ItemGroup>

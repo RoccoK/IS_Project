@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "EditUserData";
+}
+
+<h2>Redaguoti vartotojo duomenis</h2>
+<form action="action_page.php">
+    <div>
+        <h1>Redaguoti duomenis</h1>
+        <hr>
+
+        <label for="email"><b>El. paštas</b></label>
+        <input type="text" placeholder="stud@ktu.edu" name="email" required>
+
+        <label for="psw"><b>Slaptažodis</b></label>
+        <input type="password" placeholder="123456" name="psw" required>
+
+        <label for="psw-repeat"><b>Pakartokite slaptažodį</b></label>
+        <input type="password" placeholder="123456" name="psw-repeat" required>
+
+
+        <hr>
+        <label for="fname"><b>Vardas</b></label>
+        <input type="text" placeholder="Vardas" name="fname" required>
+
+        <label for="lname"><b>Pavardė</b></label>
+        <input type="text" placeholder="Pavardė" name="lname" required>
+
+        <label for="phone"><b>telefonas</b></label>
+        <input type="text" placeholder="+37063334444" name="phone" required>
+
+
+        <hr>
+        <label for="city"><b>Miestas</b></label>
+        <input type="text" placeholder="Kaunas" name="city" required>
+
+        <label for="street"><b>Gatvė</b></label>
+        <input type="text" placeholder="Studentų g. 48" name="street" required>
+
+        <label for="houseNum"><b>Namo nr.</b></label>
+        <input type="text" placeholder="50" name="houseNum" required>
+
+        <label for="zipCode"><b>Pašto kodas</b></label>
+        <input type="text" placeholder="44100" name="zipCode" required>
+
+        <hr>
+        <button type="submit" class="btn btn-primary" onclick="location.href = '../';">Patvirtinti</button>
+    </div>
+</form>
