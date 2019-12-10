@@ -1,0 +1,46 @@
+﻿@model IS_Project.ViewModels.AlergyPerson
+@{
+    ViewBag.Title = "CheckAlergy";
+}
+
+<h2>Alergijos tikrinimas</h2>
+
+@using (Html.BeginForm("CheckAlergy", "RecipeSubsystem"))
+{
+
+<div class="form-horizontal">
+    <h4>Pacientas</h4>
+    <hr />
+    <div class="form-group">
+        @Html.LabelFor(model => model.Vardas, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="text" name="Vardas" required class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Pavarde, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="text" name="Pavarde" required class="form-control" />
+        </div>
+    </div>
+    <h4>Vaistas</h4>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Vaistas, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="text" name="Vaistas" required class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Ieškoti" class="btn btn-success" />
+        </div>
+    </div>
+
+    @if (Model.Tikrinimas != null && !Model.Tikrinimas.Equals(""))
+    {
+        <div class="form-group" font size="6">
+            @Html.DisplayFor(model => model.Tikrinimas)
+        </div>
+    }
+    </div>
+}
