@@ -20,9 +20,42 @@ namespace IS_Project.Controllers
         {
             return View();
         }
-        public ActionResult DeleteUser()
+        public ActionResult DeleteUser(int id)
         {
-            return View();
+            Vartotojas v = ctx.Vartotojas.Find(id);
+            ViewModels.User usr = new ViewModels.User();
+            usr.id = v.VartotojasId;
+            usr.Vardas = v.Vardas;
+            usr.Pavarde = v.Pavarde;
+            usr.Pastas = v.Elpastas;
+            usr.Telefonas = v.TelNr;
+            Adresas adr = ctx.Adresas.Find(id);
+            usr.Miestas = adr.Miestas;
+            usr.Gatve = adr.Gatve;
+            usr.Namas = adr.NamoNr.ToString();
+            usr.PastoKodas = adr.PastoKodas.ToString();
+            Pacientas p = ctx.Pacientas.Find(id);
+            usr.GimimoData = p.GimimoData.Date;
+            return View(usr);
+        }
+        [HttpPost]
+        public ActionResult DeleteUser(int id, ViewModels.User usr)
+        {
+            try
+            {
+                ctx.Remove(ctx.Pacientas.Find(id));
+                ctx.Remove(ctx.Adresas.Find(id));
+                ctx.Remove(ctx.Vartotojas.Find(id));
+                ctx.Remove(ctx.Daktaras.Find(id));
+                ctx.SaveChanges();
+                return RedirectToAction("../");
+            }
+            catch
+            {
+                ModelState.AddModelError("id", "Toks vartotojas neegizstuoja");
+
+                return View();
+            }
         }
         public ActionResult SendReminder()
         {
@@ -34,7 +67,7 @@ namespace IS_Project.Controllers
         }
         public ActionResult ViewUserData()
         {
-            int id = 1;
+            int id = 4;
             Vartotojas v = ctx.Vartotojas.Find(id);
             ViewModels.User usr = new ViewModels.User();
             usr.id = v.VartotojasId;
@@ -103,7 +136,7 @@ namespace IS_Project.Controllers
             }
             catch
             {
-                ModelState.AddModelError("id", "Baldas su tokiu id jau egzistuoja");
+                ModelState.AddModelError("id", "Toks vartotojas neegizstuoja");
 
                 return View();
             }
