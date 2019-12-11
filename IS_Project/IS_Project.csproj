@@ -251,7 +251,6 @@
     <Compile Include="ViewModels\AlergyPerson.cs" />
     <Compile Include="ViewModels\ReceptasView.cs" />
     <Compile Include="ViewModels\VardasPavarde.cs" />
-
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -334,7 +333,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\UserSubsystem\AddUser.cshtml" />
+    <Content Include="Views\UserSubsystem\AddDoctorUser.cshtml" />
     <Content Include="Views\UserSubsystem\Index.cshtml" />
     <Content Include="Views\Home\WebPage1.cshtml" />
     <Content Include="Views\UserSubsystem\DeleteUser.cshtml" />
@@ -349,6 +348,8 @@
     <Content Include="Views\RecipeSubsystem\Delete.cshtml" />
     <Content Include="Views\RecipeSubsystem\SearchPatient.cshtml" />
     <Content Include="Views\RecipeSubsystem\CheckAlergy.cshtml" />
+    <Content Include="Views\UserSubsystem\AddPatientUser.cshtml" />
+    <Content Include="Views\UserSubsystem\PreAddUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
