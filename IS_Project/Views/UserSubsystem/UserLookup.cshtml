@@ -1,7 +1,41 @@
-﻿
+﻿@model IS_Project.ViewModels.VardasPavarde
 @{
     ViewBag.Title = "UserLookup";
 }
 
-<h3>Vartotojo paieška</h3>
-<input type="text" placeholder="vardenis pavardenis" name="name" required>
+<h2>Paciento paieška</h2>
+
+@using (Html.BeginForm("ViewUserData", "UserSubsystem"))
+{
+
+<div class="form-horizontal">
+    <h4>Pacientas</h4>
+    <hr />
+    <div class="form-group">
+        @Html.LabelFor(model => model.Vardas, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="text" name="Vardas" required class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Pavarde, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="text" name="Pavarde" required class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Ieškoti" class="btn btn-success" />
+        </div>
+    </div>
+    @*<table>
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <tr>
+            @Html.ActionLink("Redaguoti", "/EditUser", new { id = Model.Vardas }, new { @class = "btn btn-primary action" })
+        </tr>
+        <tr>
+            @Html.ActionLink("Šalinti", "/DeleteUser", new { id = Model.Pavarde }, new { @class = "btn btn-danger" })
+        </tr>
+    </table>*@
+</div>
+}

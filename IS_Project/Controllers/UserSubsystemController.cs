@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using IS_Project.Models;
 using IS_Project.ViewModels;
+using System.Net;
+using System.Net.Mail;
 
 namespace IS_Project.Controllers
 {
@@ -14,6 +16,10 @@ namespace IS_Project.Controllers
 
         // GET: UserSubsystem
         public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult SendReminder()
         {
             return View();
         }
@@ -53,18 +59,6 @@ namespace IS_Project.Controllers
             ctx.Add(v);
             ctx.SaveChanges();
             return RedirectToAction("../");
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    
-                }
-
-            }
-            catch
-            {
-                return View(usr);
-            }
         }
         public ActionResult AddPatientUser()
         {
@@ -149,17 +143,27 @@ namespace IS_Project.Controllers
                 return View();
             }
         }
-        public ActionResult SendReminder()
+
+        public ActionResult UserLookup(string vp)
         {
             return View();
         }
-        public ActionResult UserLookup()
+        [HttpPost]
+        public ActionResult UserLookup(VardasPavarde vp)
         {
             return View();
         }
         public ActionResult ViewUserData()
         {
-            int id = 5;
+            int id = 15;
+            if (Request.Form["Vardas"] != null)
+            {
+                var vart = ctx.Vartotojas
+                       .Where(x => x.Vardas == Request.Form["Vardas"].ToString() 
+                       && x.Pavarde == Request.Form["Pavarde"].ToString())
+                       .FirstOrDefault();
+                id = vart.VartotojasId;
+            }
             Vartotojas v = ctx.Vartotojas.Find(id);
             User usr = new User();
             usr.id = v.VartotojasId;
@@ -172,8 +176,6 @@ namespace IS_Project.Controllers
             usr.Gatve = adr.Gatve;
             usr.Namas = adr.NamoNr;
             usr.PastoKodas = adr.PastoKodas;
-            Pacientas p = ctx.Pacientas.Find(id);
-            usr.GimimoData = p.GimimoData.Date;
             return View(usr);
         }
         public ActionResult EditUserData(int id)
@@ -195,8 +197,6 @@ namespace IS_Project.Controllers
             usr.Gatve = adr.Gatve;
             usr.Namas = adr.NamoNr;
             usr.PastoKodas = adr.PastoKodas;
-            Pacientas p = ctx.Pacientas.Find(id);
-            usr.GimimoData = p.GimimoData.Date;
             return View(usr);
         }
         // skidaddle, skidoodle, your code is now a noodle
@@ -220,9 +220,6 @@ namespace IS_Project.Controllers
                 adr.PastoKodas = usr.PastoKodas;
                 ctx.Update(adr);
 
-                Pacientas p = ctx.Pacientas.Find(id);
-                p.GimimoData = usr.GimimoData;
-                ctx.Update(p);
                 ctx.SaveChanges();
                 return RedirectToAction("/ViewUserData");
             }
