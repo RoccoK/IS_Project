@@ -1,10 +1,16 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <ItemGroup> <Reference Include="netstandard" /> </ItemGroup>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.datetimepicker.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -26,8 +32,10 @@
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li>@Html.ActionLink("Prideti vartotoja", "AddUser", "UserSubsystem")</li>
-
+                            <li>@Html.ActionLink("Pridėti vartotoją", "PreAddUser", "UserSubsystem")</li>
+                            <li>@Html.ActionLink("Siųsti priminimą", "SendEmail", "UserSubsystem")</li>
+                            <li>@Html.ActionLink("Ieškoti vartotojo", "UserLookup", "UserSubsystem")</li>
+                            <li>@Html.ActionLink("Peržiūrėti paskyros duomenis", "ViewUserData", "UserSubsystem")</li>
                         </ul>
                     </li>
                     <li>
@@ -60,10 +68,11 @@
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li>@Html.ActionLink("Medžiagos tekstūros", "Index", "Tekstura")</li>
-                            <li>@Html.ActionLink("Baldų tipai", "Index", "Tipas")</li>
-                            <li>@Html.ActionLink("Transportavimo tipai", "Index", "Transporto")</li>
-                            <li>@Html.ActionLink("Sutarčių ataskaitos", "Index", "Ataskaita")</li>
+                            <li>@Html.ActionLink("Receptų peržiūros langas", "Index", "RecipeSubsystem")</li>
+                            <li>@Html.ActionLink("Pridėti receptą", "Create", "RecipeSubsystem")</li>
+                            <li>@Html.ActionLink("Ieškoti vartotojo", "SearchPatient", "RecipeSubsystem")</li>
+                            <li>@Html.ActionLink("Tikrinti ar pacientas alergiškas", "CheckAlergy", "RecipeSubsystem")</li>
+
                         </ul>
                     </li>
                 </ul>
@@ -81,6 +90,44 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/jquery.datetimepicker.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //Kadangi naudojamas vienas pasirinkimo objektas(SelectListItems) nustatyti pasirinkimo reikšmei reikia ja nustatyti panaudojant javascript funkcija ir html elementą
+            $(".sel_element").each(function () {
+                $(this).closest("td").find("select").val($(this).text());
+            });
+
+            //Inicijuojami datos ir laiko pasirinkimo įvedimo elementai
+            $(".date-picker").datepicker({ dateFormat: 'yy-mm-dd', defaultDate: new Date() });
+            $(".date-picker").datepicker("setDate", "-0d");
+            $(".date-picker1").datepicker({ dateFormat: 'yy-mm-dd', defaultDate: new Date() });
+            $(".datetime-picker").datetimepicker({ format: 'Y-m-d h:i' });
+            //$(".time-picker").({ format: 'h:i' });
+
+            //Iniciajuojamas datatable (skirtas rikiuoti ieskoti ir panašiai)
+            /*$(".datatable").DataTable({
+                "language": translation_lt
+            });*/
+
+            $('input[type=text],input[type=radio],input[type=checkbox],textarea,select,input[type=email],input[type=number],input[type=datetime]').each(function () {
+                var req = $(this).attr('data-val-required');
+                var exclude = $(this).attr('data-exclude');
+                if (undefined != req && undefined == exclude) {
+                    var label = $('label[for="' + $(this).attr('id') + '"]');
+                    var text = label.text();
+                    if (text.length > 0) {
+                        label.append('<span style="color:red"> *</span>');
+                    }
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>

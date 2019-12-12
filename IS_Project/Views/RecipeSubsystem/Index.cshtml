@@ -1,0 +1,66 @@
+﻿@model IEnumerable<IS_Project.Models.Receptas>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Receptų peržiūros langas</h2>
+
+@using (Html.BeginForm("Index", "RecipeSubsystem"))
+{
+    <p>
+        <div class="form-inline">
+            <label for="remedy">Vaistas</label>
+            <input type="text" placeholder="Morphine" name="remedy"  class="form-control"> &nbsp;
+            <label for="date">Data</label>
+            <input type="date" name="date" autocomplete="off" class = "form-control ui-datepicker">
+            <input class="btn btn-success" type="submit" value="Atrinkti">
+        </div>
+    </p>
+}
+    <table class="table table-striped datatable">
+        <tr style="background-color: lightblue">
+            <th>
+                @Html.DisplayNameFor(model => model.ReceptoNr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkVaistasId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkPacientasId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Laikas)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReceptoNr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FkVaistas.Pavadinimas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FkPacientas.PacientasNavigation.Vardas), @Html.DisplayFor(modelItem => item.FkPacientas.PacientasNavigation.Pavarde)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Laikas)
+                </td>
+                <td>
+                    @Html.ActionLink("Redaguoti", "Edit", new { id = item.ReceptoNr }, new { @class = "btn btn-primary action" }) &nbsp;
+                    @Html.ActionLink("Šalinti", "Delete", new { id = item.ReceptoNr }, new { @class = "btn btn-danger action" })
+                </td>
+            </tr>
+        }
+
+    </table>
