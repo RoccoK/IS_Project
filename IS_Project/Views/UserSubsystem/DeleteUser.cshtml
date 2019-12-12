@@ -1,12 +1,47 @@
-﻿
+﻿@model IS_Project.ViewModels.User
 @{
     ViewBag.Title = "DeleteUser";
 }
 
 <h1>Ar tikrai norite šalinti vartotoją?</h1>
-
 <div>
-    <button class="btn btn-secondary" type="submit" onclick="location.href = '';">Taip</button>
-    <button class="btn btn-primary" type="submit" onclick="location.href = '';">Ne</button>
-</div>
+    <h4>Receptas</h4>
+    <hr />
+    <dl class="dl-horizontal">
 
+        <dt>
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vardas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vardas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pavarde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pavarde)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Atgal", "ViewUserData", "UserSubSystem", new { @class = "btn btn-default" })
+            <input type="submit" value="Šalinti" class="btn btn-danger" />
+        </div>
+    }
+</div>
