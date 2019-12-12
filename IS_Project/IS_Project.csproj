@@ -245,6 +245,7 @@
     <Compile Include="Models\Vaistas.cs" />
     <Compile Include="Models\VaistoVartojimas.cs" />
     <Compile Include="Models\Vartotojas.cs" />
+    <Compile Include="Models\Email.cs" />
     <Compile Include="Models\Zinute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\User.cs" />
@@ -337,7 +338,6 @@
     <Content Include="Views\UserSubsystem\Index.cshtml" />
     <Content Include="Views\Home\WebPage1.cshtml" />
     <Content Include="Views\UserSubsystem\DeleteUser.cshtml" />
-    <Content Include="Views\UserSubsystem\SendReminder.cshtml" />
     <Content Include="Views\UserSubsystem\UserLookup.cshtml" />
     <Content Include="Views\UserSubsystem\ViewUserData.cshtml" />
     <Content Include="Views\UserSubsystem\EditUserData.cshtml" />
@@ -350,6 +350,7 @@
     <Content Include="Views\RecipeSubsystem\CheckAlergy.cshtml" />
     <Content Include="Views\UserSubsystem\AddPatientUser.cshtml" />
     <Content Include="Views\UserSubsystem\PreAddUser.cshtml" />
+    <Content Include="Views\UserSubsystem\SendEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
