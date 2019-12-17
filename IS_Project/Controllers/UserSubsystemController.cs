@@ -49,11 +49,11 @@ namespace IS_Project.Controllers
         }
         public ActionResult AddDoctorUser()
         {
-            User userView = new User();
+            ViewModels.User userView = new ViewModels.User();
             return View(userView);
         }
         [HttpPost]
-        public ActionResult AddDoctorUser(User usr)
+        public ActionResult AddDoctorUser(ViewModels.User usr)
         {
 
             Vartotojas v = new Vartotojas();
@@ -82,11 +82,11 @@ namespace IS_Project.Controllers
         }
         public ActionResult AddPatientUser()
         {
-            User userView = new User();
+            ViewModels.User userView = new ViewModels.User();
             return View(userView);
         }
         [HttpPost]
-        public ActionResult AddPatientUser(User usr)
+        public ActionResult AddPatientUser(ViewModels.User usr)
         {
             
             try
@@ -129,7 +129,7 @@ namespace IS_Project.Controllers
         public ActionResult DeleteUser(int id)
         {
             Vartotojas v = ctx.Vartotojas.Find(id);
-            User usr = new User();
+            ViewModels.User usr = new ViewModels.User();
             usr.id = v.VartotojasId;
             usr.Vardas = v.Vardas;
             usr.Pavarde = v.Pavarde;
@@ -143,7 +143,7 @@ namespace IS_Project.Controllers
             return View(usr);
         }
         [HttpPost]
-        public ActionResult DeleteUser(int id, User usr)
+        public ActionResult DeleteUser(int id, ViewModels.User usr)
         {
             ctx.Remove(ctx.Pacientas.Find(id));
             ctx.Remove(ctx.Adresas.Find(id));
@@ -187,7 +187,7 @@ namespace IS_Project.Controllers
                 id = vart.VartotojasId;
             }
             Vartotojas v = ctx.Vartotojas.Find(id);
-            User usr = new User();
+            ViewModels.User usr = new ViewModels.User();
             usr.id = v.VartotojasId;
             usr.Vardas = v.Vardas;
             usr.Pavarde = v.Pavarde;
@@ -207,7 +207,7 @@ namespace IS_Project.Controllers
         public ActionResult EditUser(int id)
         {
             Vartotojas v = ctx.Vartotojas.Find(id);
-            User usr = new User();
+            ViewModels.User usr = new ViewModels.User();
             usr.id = v.VartotojasId;
             usr.Vardas = v.Vardas;
             usr.Pavarde = v.Pavarde;
@@ -221,7 +221,7 @@ namespace IS_Project.Controllers
             return View(usr);
         }
         [HttpPost]
-        public ActionResult EditUser(int id, User usr)
+        public ActionResult EditUser(int id, ViewModels.User usr)
         {
             Vartotojas v = ctx.Vartotojas.Find(id);
             v.VartotojasId = usr.id;
