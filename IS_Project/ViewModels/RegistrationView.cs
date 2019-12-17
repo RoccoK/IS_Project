@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IS_Project.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -6,25 +7,28 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace IS_Project.Models
+namespace IS_Project.ViewModels
 {
-    public partial class Registracija
+    public class RegistrationView
     {
-        [DisplayName("id")]
         public int RegistracijaId { get; set; }
-        [DisplayName("Pateikimo data")]
         public DateTime PateikimoData { get; set; }
-        [DisplayName("Būsena")]
         public int Busena { get; set; }
-        [DisplayName("Kviesta greitoji")]
+        [DisplayName("Kviesta greitoji:")]
         public sbyte KviestaGreitoji { get; set; }
         public int FkPacientasId { get; set; }
-        [DisplayName("Daktaras")]
+        [DisplayName("Daktaras:")]
+        [Required]
         public int FkDaktarasId { get; set; }
-        [DisplayName("Vizito data")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
+        [DisplayName("Vizito data:")]
+        [Required]
         public DateTime VisitoData { get; set; }
 
         public virtual Daktaras FkDaktaras { get; set; }
         public virtual Pacientas FkPacientas { get; set; }
+        public IList<SelectListItem> DaktarasList { get; set; }
+        public IList<SelectListItem> PacientasList { get; set; }
     }
 }
