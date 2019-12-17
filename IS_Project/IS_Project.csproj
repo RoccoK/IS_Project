@@ -296,6 +296,7 @@
     <Content Include="Views\RegistrationSubsystem\Index.cshtml" />
     <Content Include="Views\RegistrationSubsystem\Edit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\RegistrationSubsystem\timetable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

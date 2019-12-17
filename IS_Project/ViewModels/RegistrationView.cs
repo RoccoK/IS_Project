@@ -21,7 +21,7 @@ namespace IS_Project.ViewModels
         [Required]
         public int FkDaktarasId { get; set; }
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         [DisplayName("Vizito data:")]
         [Required]
         public DateTime VisitoData { get; set; }
