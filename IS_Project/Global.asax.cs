@@ -20,7 +20,7 @@ namespace IS_Project
 
             //Seed test and initial data
 
-            InitDatabase();
+            //InitDatabase();
 
         }
 
