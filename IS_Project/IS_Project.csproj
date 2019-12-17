@@ -407,7 +407,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\AddUser\" />
     <Folder Include="Views\RegistrationSubsystem\" />
-    <Folder Include="Views\User\" />
     <Folder Include="Views\VisitSubsystem\" />
   </ItemGroup>
   <ItemGroup>
