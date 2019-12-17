@@ -69,18 +69,23 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Receptų posistemė
-                        </a>
+                        @if (Convert.ToInt32(Session["state"]) == 1)
+                        {
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Receptų posistemė
+                            </a>
 
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li>@Html.ActionLink("Receptų peržiūros langas", "Index", "RecipeSubsystem")</li>
-                            <li>@Html.ActionLink("Pridėti receptą", "Create", "RecipeSubsystem")</li>
-                            <li>@Html.ActionLink("Ieškoti vartotojo", "SearchPatient", "RecipeSubsystem")</li>
-                            <li>@Html.ActionLink("Tikrinti ar pacientas alergiškas", "CheckAlergy", "RecipeSubsystem")</li>
-
-                        </ul>
-                    </li>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li>@Html.ActionLink("Receptų peržiūros langas", "Index", "RecipeSubsystem")</li>
+                                @if (Convert.ToInt32(Session["role"]) == 1 || Convert.ToInt32(Session["role"]) == 2)
+                                {
+                                    <li>@Html.ActionLink("Pridėti receptą", "Create", "RecipeSubsystem")</li>
+                                    <li>@Html.ActionLink("Ieškoti vartotojo", "SearchPatient", "RecipeSubsystem")</li>
+                                    <li>@Html.ActionLink("Tikrinti ar pacientas alergiškas", "CheckAlergy", "RecipeSubsystem")</li>
+                                }
+                            </ul>
+                        }
+                    </li>                     
                     <li>@Html.ActionLink("Prisijungimas", "Index", "User")</li>
                 </ul>
             </div>
