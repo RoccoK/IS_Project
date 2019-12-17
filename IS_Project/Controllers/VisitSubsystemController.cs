@@ -55,7 +55,7 @@ namespace IS_Project.Controllers
                 .Include(visit => visit.FkLiga)
                 .Include(visit => visit.FkPacientas)
                     .ThenInclude(pac => pac.PacientasNavigation).ToList();
-
+            visitsIE = visitsIE.OrderBy(v => v.DataIki).ToList();
             PopulateSections(visitsIE[0]);
             return View(visitsIE);
         }
