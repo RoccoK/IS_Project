@@ -1,0 +1,79 @@
+﻿@model IEnumerable<IS_Project.Models.LigonioVisitas>
+
+@{
+    ViewBag.Title = "Ieškoti vizito";
+}
+
+<h2>Ieškoti vizito</h2>
+
+@using (Html.BeginForm("SearchVisits", "VisitSubsystem"))
+{
+    <p>
+        <div class="form-inline">
+            <label for="patient">Pacientas: </label>
+            @Html.DropDownList("patient",
+                    Model.First().NamesList,
+                    "Vardas Pavardė",
+                    new { @class = "form-control" })
+            <input class="btn btn-success" type="submit" value="Atrinkti">
+        </div>
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DataNuo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataIki)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Komentarai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FkLiga)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FkPalata)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FkPacientas)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        var patient = item.FkPacientas.PacientasId.ToString()
+                    + " - "
+                    + item.FkPacientas.PacientasNavigation.Vardas
+                    + " "
+                    + item.FkPacientas.PacientasNavigation.Pavarde;
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataNuo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataIki)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Komentarai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkLiga.Pavadinimas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkPalata.PalataNr)
+            </td>
+            <td>
+                @(patient)
+            </td>
+            <td>
+                @Html.ActionLink("Redaguoti", "EditVisit", new { id = item.LigonioVisitasId }, new { @class = "btn btn-primary action" })
+                @Html.ActionLink("Ištrinti", "DeleteVisit", new { id = item.LigonioVisitasId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

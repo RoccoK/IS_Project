@@ -1,0 +1,56 @@
+﻿@model IEnumerable<IS_Project.Models.Palata>
+
+@{
+    ViewBag.Title = "Palatų vizualizacija";
+}
+
+<h2>Palatų vizualizacija</h2>
+
+<table class="table thead-dark">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PalataNr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VietuSkaicius)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UzimtaVietu)
+        </th>
+        <th>
+            Santykis
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    var color = "alert-success";
+    var bat = "battery-empty";
+    var proc = Math.Round(item.UzimtaVietu / (float)item.VietuSkaicius * 100.0, 2);
+    if(proc > 50)
+    {
+        color = "alert-warning";
+        bat = "battery-half";
+    }
+    if(proc > 90)
+    {
+        color = "alert-danger";
+        bat = "battery-full";
+    }
+
+    <tr class="@(color) light">
+        <td>
+            @Html.DisplayFor(modelItem => item.PalataNr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VietuSkaicius)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UzimtaVietu)
+        </td>
+        <td>
+            @(proc)% <i class="fas fa-@(bat)" style="color:#cab019"></i>
+        </td>
+    </tr>
+}
+
+</table>

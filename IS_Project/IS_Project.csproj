@@ -218,10 +218,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\RecipeSubsystemController.cs" />
     <Compile Include="Controllers\UserSubsystemController.cs" />
+    <Compile Include="Controllers\VisitSubsystemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -406,11 +408,16 @@
     <Content Include="Views\UserSubsystem\AddPatientUser.cshtml" />
     <Content Include="Views\UserSubsystem\PreAddUser.cshtml" />
     <Content Include="Views\UserSubsystem\SendEmail.cshtml" />
+    <Content Include="Views\VisitSubsystem\RoomsIndex.cshtml" />
+    <Content Include="Views\VisitSubsystem\SearchVisits.cshtml" />
+    <Content Include="Views\VisitSubsystem\DeleteVisit.cshtml" />
+    <Content Include="Views\VisitSubsystem\EditVisit.cshtml" />
+    <Content Include="Views\VisitSubsystem\CreateVisit.cshtml" />
     <Content Include="Views\RegistrationSubsystem\timetable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\AddUser\" />
+    <Folder Include="Views\Email\" />
     <Folder Include="Views\RegistrationSubsystem\" />
     <Folder Include="Views\VisitSubsystem\" />
   </ItemGroup>

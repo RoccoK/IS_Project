@@ -61,10 +61,9 @@
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li>@Html.ActionLink("Medžiagos tekstūros", "Index", "Tekstura")</li>
-                            <li>@Html.ActionLink("Baldų tipai", "Index", "Tipas")</li>
-                            <li>@Html.ActionLink("Transportavimo tipai", "Index", "Transporto")</li>
-                            <li>@Html.ActionLink("Sutarčių ataskaitos", "Index", "Ataskaita")</li>
+                            <li>@Html.ActionLink("Pridėti apsilankymą", "CreateVisit", "VisitSubsystem")</li>
+                            <li>@Html.ActionLink("Palatų vizualizacija", "RoomsIndex", "VisitSubsystem")</li>
+                            <li>@Html.ActionLink("Ligonio vizitų istorijos peržiūra", "SearchVisits", "VisitSubsystem")</li>
                         </ul>
                     </li>
                     <li>
@@ -90,7 +89,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - ISP Projektas</p>
         </footer>
     </div>
 

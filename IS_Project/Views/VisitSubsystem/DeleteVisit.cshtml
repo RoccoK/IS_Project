@@ -1,0 +1,74 @@
+﻿@model IS_Project.Models.LigonioVisitas
+
+@{
+    ViewBag.Title = "Ištrinti visitą";
+}
+
+<h2>Ištrinti visitą</h2>
+
+<div>
+    <h4>LigonioVisitas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DataNuo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataNuo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataIki)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataIki)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Komentarai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Komentarai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FkLiga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FkLiga.Pavadinimas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FkPalata)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FkPalata.PalataNr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FkPacientas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamesList.First(m => m.Value.CompareTo(Convert.ToString(model.FkPacientasId)) == 0).Text)
+        </dd>
+
+    </dl>
+</div>
+<p>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        @Html.ActionLink("Atgal į sarašą", "SearchVisits", "RecipeSubSystem", new { @class = "btn btn-default" })
+        <input type="submit" value="Šalinti" class="btn btn-danger" />
+    </div>
+    }
+</p>
