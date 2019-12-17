@@ -1,0 +1,51 @@
+﻿@model IEnumerable<IS_Project.Models.UzimtumoTvarkarastis>
+
+@{
+    ViewBag.Title = "timetable";
+}
+
+<h2>Užimtumo tvarkaraštis</h2>
+
+<h2>Registracijų peržiūra</h2>
+
+@using (Html.BeginForm("Index", "RegistrationSubsystem"))
+{
+    <p>
+        <div class="form-inline">
+            <label for="data">Data</label>
+            <input type="date" name="data" class="form-control ui-datepicker">
+            <input class="btn btn-success" type="submit" value="Ieškoti">
+        </div>
+    </p>
+}
+<table class="table table-striped datatable">
+    <tr style="background-color: lightblue">
+        <th>
+            @Html.DisplayNameFor(model => model.UzimtumoTvarkarastisId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrukmeMin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FkDaktaras)
+        </th>
+        <th style="width: 18%"></th>
+    </tr>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UzimtumoTvarkarastisId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrukmeMin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FkDaktaras.DaktarasNavigation.Vardas) &nbsp;,
+                    @Html.DisplayFor(modelItem => item.FkDaktaras.DaktarasNavigation.Pavarde)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

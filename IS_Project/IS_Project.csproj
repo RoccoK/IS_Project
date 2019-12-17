@@ -388,6 +388,10 @@
     <Content Include="Views\UserSubsystem\Index.cshtml" />
     <Content Include="Views\Home\WebPage1.cshtml" />
     <Content Include="Views\UserSubsystem\DeleteUser.cshtml" />
+    <Content Include="Views\RegistrationSubsystem\Create.cshtml" />
+    <Content Include="Views\RegistrationSubsystem\Delete.cshtml" />
+    <Content Include="Views\RegistrationSubsystem\Index.cshtml" />
+    <Content Include="Views\RegistrationSubsystem\Edit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\UserSubsystem\UserLookup.cshtml" />
     <Content Include="Views\UserSubsystem\ViewUserData.cshtml" />
@@ -402,6 +406,7 @@
     <Content Include="Views\UserSubsystem\AddPatientUser.cshtml" />
     <Content Include="Views\UserSubsystem\PreAddUser.cshtml" />
     <Content Include="Views\UserSubsystem\SendEmail.cshtml" />
+    <Content Include="Views\RegistrationSubsystem\timetable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
