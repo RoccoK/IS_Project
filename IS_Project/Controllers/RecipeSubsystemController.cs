@@ -14,6 +14,26 @@ namespace IS_Project.Controllers
         // GET: Recepy
         public ActionResult Index()
         {
+            int id = 0;
+            if (Convert.ToInt32(Session["role"]) == 3)
+            {
+                id = Convert.ToInt32(Session["id"]);
+            }
+            if(id != 0)
+            {
+                Receptas[] receptas = ctx.Receptas
+                    .Where(x => x.FkPacientasId == id)
+                    .ToArray();
+                for (int i = 0; i < receptas.Length; i++)
+                {
+                    receptas[i].FkPacientas = ctx.Pacientas.Find(receptas[i].FkPacientasId);
+                    receptas[i].FkPacientas.PacientasNavigation = ctx.Vartotojas.Find(receptas[i].FkPacientas.PacientasId);
+                    receptas[i].FkVaistas = ctx.Vaistas.Find(receptas[i].FkVaistasId);
+                }
+                List<Receptas> receptas1 = new List<Receptas>(receptas);
+                return View(receptas1);
+            }
+
             string remedy = "";
             DateTime date = new DateTime();
             string vardas = "";

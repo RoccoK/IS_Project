@@ -6,17 +6,20 @@
 
 <h2>Receptų peržiūros langas</h2>
 
-@using (Html.BeginForm("Index", "RecipeSubsystem"))
+@if (Convert.ToInt32(Session["role"]) == 1 || Convert.ToInt32(Session["role"]) == 2)
 {
-    <p>
-        <div class="form-inline">
-            <label for="remedy">Vaistas</label>
-            <input type="text" placeholder="Morphine" name="remedy"  class="form-control"> &nbsp;
-            <label for="date">Data</label>
-            <input type="date" name="date" autocomplete="off" class = "form-control ui-datepicker">
-            <input class="btn btn-success" type="submit" value="Atrinkti">
-        </div>
-    </p>
+    using (Html.BeginForm("Index", "RecipeSubsystem"))
+    {
+        <p>
+            <div class="form-inline">
+                <label for="remedy">Vaistas</label>
+                <input type="text" placeholder="Morphine" name="remedy" class="form-control"> &nbsp;
+                <label for="date">Data</label>
+                <input type="date" name="date" autocomplete="off" class="form-control ui-datepicker">
+                <input class="btn btn-success" type="submit" value="Atrinkti">
+            </div>
+        </p>
+    }
 }
     <table class="table table-striped datatable">
         <tr style="background-color: lightblue">
@@ -35,7 +38,10 @@
             <th>
                 @Html.DisplayNameFor(model => model.Laikas)
             </th>
-            <th></th>
+            @if (Convert.ToInt32(Session["role"]) == 1 || Convert.ToInt32(Session["role"]) == 2)
+            {
+                <th></th>
+            }
         </tr>
 
         @foreach (var item in Model)
@@ -56,10 +62,13 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Laikas)
                 </td>
-                <td>
-                    @Html.ActionLink("Redaguoti", "Edit", new { id = item.ReceptoNr }, new { @class = "btn btn-primary action" }) &nbsp;
-                    @Html.ActionLink("Šalinti", "Delete", new { id = item.ReceptoNr }, new { @class = "btn btn-danger action" })
-                </td>
+                @if (Convert.ToInt32(Session["role"]) == 1 || Convert.ToInt32(Session["role"]) == 2)
+                {
+                    <td>
+                        @Html.ActionLink("Redaguoti", "Edit", new { id = item.ReceptoNr }, new { @class = "btn btn-primary action" }) &nbsp;
+                        @Html.ActionLink("Šalinti", "Delete", new { id = item.ReceptoNr }, new { @class = "btn btn-danger action" })
+                    </td>
+                }
             </tr>
         }
 
