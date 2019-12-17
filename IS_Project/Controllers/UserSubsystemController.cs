@@ -145,22 +145,32 @@ namespace IS_Project.Controllers
         [HttpPost]
         public ActionResult DeleteUser(int id, ViewModels.User usr)
         {
-            ctx.Remove(ctx.Pacientas.Find(id));
+            //if(Convert.ToInt32(Session["role"]) == 1 &&
+            //    ctx.Administratorius.Find(id) != null)
+            //{
+            //    Session["state"] = 0;
+            //}
+            Session["state"] = 0;
             ctx.Remove(ctx.Adresas.Find(id));
-            if (!(ctx.Vartotojas.Find(id) == null))
+            ctx.Remove(ctx.Vartotojas.Find(id));
+            if(Convert.ToInt32(Session["role"]) == 3)
             {
-                ctx.Remove(ctx.Vartotojas.Find(id));
+                ctx.Remove(ctx.Pacientas.Find(id));
+            }
+            //if (!(ctx.Vartotojas.Find(id) == null))
+            //{
+            //    ctx.Remove(ctx.Vartotojas.Find(id));
 
-            }
-            if (!(ctx.Daktaras.Find(id) == null))
-            {
-                ctx.Remove(ctx.Daktaras.Find(id));
+            //}
+            //if (!(ctx.Daktaras.Find(id) == null))
+            //{
+            //    ctx.Remove(ctx.Daktaras.Find(id));
 
-            }
-            if (!(ctx.Receptas.Find(id) == null))
-            {
-                ctx.Remove(ctx.Receptas.Find(id));
-            }
+            //}
+            //if (!(ctx.Receptas.Find(id) == null))
+            //{
+            //    ctx.Remove(ctx.Receptas.Find(id));
+            //}
 
             ctx.SaveChanges();
             return RedirectToAction("../");
@@ -177,13 +187,26 @@ namespace IS_Project.Controllers
         }
         public ActionResult ViewUserData()
         {
-            int id = 10;
-            if (Request.Form["Vardas"] != null)
+            int id;
+            if(Convert.ToInt32(Session["loadmain"]) == 1)
+            {
+                id = Convert.ToInt32(Session["id"]);
+            }
+            else
+            {
+                id = Convert.ToInt32(Session["id2"]);
+                Session["loadmain"] = 1;
+            }
+            if (Request.Form["Vardas"] != null && Request.Form["Pavarde"] != null)
             {
                 var vart = ctx.Vartotojas
                        .Where(x => x.Vardas == Request.Form["Vardas"].ToString() 
                        && x.Pavarde == Request.Form["Pavarde"].ToString())
                        .FirstOrDefault();
+                if(vart == null)
+                {
+                    return (RedirectToAction("UserLookup", "UserSubsystem"));
+                }
                 id = vart.VartotojasId;
             }
             Vartotojas v = ctx.Vartotojas.Find(id);
@@ -239,6 +262,8 @@ namespace IS_Project.Controllers
             ctx.Update(adr);
 
             ctx.SaveChanges();
+            Session["id2"] = id;
+            Session["loadmain"] = 0;
             return RedirectToAction("/ViewUserData");
         }
     }
