@@ -24,19 +24,25 @@
                 </button>
                 @Html.ActionLink("Pagrindinis", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Vartotojų posistemė
-                        </a>
-
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li>@Html.ActionLink("Pridėti vartotoją", "PreAddUser", "UserSubsystem")</li>
-                            <li>@Html.ActionLink("Siųsti priminimą", "SendEmail", "UserSubsystem")</li>
-                            <li>@Html.ActionLink("Ieškoti vartotojo", "UserLookup", "UserSubsystem")</li>
-                            <li>@Html.ActionLink("Peržiūrėti paskyros duomenis", "ViewUserData", "UserSubsystem")</li>
-                        </ul>
+                        @if (Convert.ToInt32(Session["state"]) == 1)
+                        {
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Vartotojų posistemė
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li>@Html.ActionLink("Peržiūrėti paskyros duomenis", "ViewUserData", "UserSubsystem")</li>
+                                @if (Convert.ToInt32(Session["role"]) == 1)
+                                {
+                                    <li>@Html.ActionLink("Pridėti vartotoją", "PreAddUser", "UserSubsystem")</li>
+                                    <li>@Html.ActionLink("Siųsti priminimą", "SendEmail", "UserSubsystem")</li>
+                                    <li>@Html.ActionLink("Ieškoti vartotojo", "UserLookup", "UserSubsystem")</li>
+                                }
+                            </ul>
+                        }
                     </li>
                     <li>
                         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -75,6 +81,7 @@
 
                         </ul>
                     </li>
+                    <li>@Html.ActionLink("Prisijungimas", "Index", "User")</li>
                 </ul>
             </div>
 

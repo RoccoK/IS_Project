@@ -3,13 +3,13 @@
     ViewBag.Title = "UserLookup";
 }
 
-<h2>Paciento paieška</h2>
+<h2>Vartotojo paieška</h2>
 
 @using (Html.BeginForm("ViewUserData", "UserSubsystem"))
 {
 
 <div class="form-horizontal">
-    <h4>Pacientas</h4>
+    <h4>Vartotojas</h4>
     <hr />
     <div class="form-group">
         @Html.LabelFor(model => model.Vardas, htmlAttributes: new { @class = "control-label col-md-2" })

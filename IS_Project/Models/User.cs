@@ -13,7 +13,7 @@ namespace IS_Project.Models
         [DisplayName("E-paštas")]
         [Required(AllowEmptyStrings =false, ErrorMessage = "Neįvestas e-paštas")]
         public string epastas { get; set; }
-
+        [DisplayName("Slaptažodis")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Neįvestas slaptažodis")]
         public string Password { get; set; }
 
