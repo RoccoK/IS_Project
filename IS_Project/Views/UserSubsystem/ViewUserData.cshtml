@@ -1,0 +1,83 @@
+﻿@model IS_Project.ViewModels.User
+@{
+    ViewBag.Title = "ViewUserData";
+}
+    <head>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #f5f0d8;
+            }
+        </style>
+    </head>
+<h2>Peržiūrėti vartotojo duomenis</h2>
+<body>
+    <table>
+        <tr>
+            <th>Vardas</th>
+            <th>Pavardė</th>
+            <th>Paštas</th>
+            <th>Telefonas</th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Vardas)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Pavarde)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Pastas)
+
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Telefonas)
+
+            </td>
+        </tr>
+    </table><br>
+    <table>
+        <tr>
+            <th>Miestas</th>
+            <th>Gatvė</th>
+            <th>Namas</th>
+            <th>Pašto kodas</th>
+        </tr>
+        <tr>
+            <td>
+                @Html.ValidationMessageFor(model => model.id, "", new { @class = "text-danger" })
+
+                @Html.DisplayFor(model => model.Miestas)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Gatve)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Namas)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.PastoKodas)
+            </td>
+        </tr>
+    </table><br>
+    <table>
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <tr>
+            @Html.ActionLink("Redaguoti", "/EditUser", new { id = Model.id}, new { @class = "btn btn-primary action" })
+        </tr>
+        <tr>
+            @Html.ActionLink("Šalinti", "/DeleteUser", new { id = Model.id }, new { @class = "btn btn-danger" })
+        </tr>
+    </table>
+</body>
