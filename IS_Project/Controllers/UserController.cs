@@ -20,6 +20,7 @@ namespace IS_Project.Controllers
         {
             Session["id"] = 0;
             Session["role"] = 0;
+            Session["state"] = 0;
             string message = "";
             using(hospitaldbContext db = new hospitaldbContext())
             {
@@ -42,6 +43,7 @@ namespace IS_Project.Controllers
 
                     }
                     Session["id"] = temp.VartotojasId;
+                    Session["state"] = 1;
                     return Redirect("~/Home/Index");
                 }
                 else if(user.epastas != null && user.Password != null)
