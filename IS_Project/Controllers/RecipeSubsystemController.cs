@@ -258,8 +258,6 @@ namespace IS_Project.Controllers
 
             receptasView.VaistasList = selectListVaistai;
             receptasView.PacientasList = selectListVartotojai;
-
-
         }
     }
 }
