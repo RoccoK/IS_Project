@@ -1,4 +1,5 @@
 ﻿using IS_Project.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,7 @@ namespace IS_Project.ViewModels
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Data { get; set; }
         [DisplayName("Laikas")]
+        [Required]
         public TimeSpan? Laikas { get; set; }
         [DisplayName("Recepto nr.")]
         public int ReceptoNr { get; set; }
