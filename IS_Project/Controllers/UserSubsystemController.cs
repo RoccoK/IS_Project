@@ -31,14 +31,14 @@ namespace IS_Project.Controllers
             if (ModelState.IsValid)
             {
                 SmtpClient client = new SmtpClient("smtp.mail.com");
-                client.Credentials = new NetworkCredential("roccofakeaccount@mail.com", "rocco123");
+                client.Credentials = new NetworkCredential("ISP.Mailer@mail.com", "rocco123");
                 MailMessage mailMessage = new MailMessage();
-                mailMessage.From = new MailAddress("roccofakeaccount@mail.com");
+                mailMessage.From = new MailAddress("ISP.Mailer@mail.com");
                 mailMessage.To.Add(model.ToEmail);
                 mailMessage.Subject = "Priminimas";
                 mailMessage.Body = model.Message;
                 client.Send(mailMessage);
-                return RedirectToAction("../");
+                return RedirectToAction("../Home/Index");
 
             }
             return View(model);
@@ -78,7 +78,7 @@ namespace IS_Project.Controllers
 
             ctx.Add(v);
             ctx.SaveChanges();
-            return RedirectToAction("../");
+            return RedirectToAction("../Home/Index");
         }
         public ActionResult AddPatientUser()
         {
@@ -119,7 +119,7 @@ namespace IS_Project.Controllers
                     //markeRepository.addMarke(collection);
                 }
 
-                return RedirectToAction("../");
+                return RedirectToAction("../Home/Index");
             }
             catch
             {
@@ -173,7 +173,7 @@ namespace IS_Project.Controllers
             //}
 
             ctx.SaveChanges();
-            return RedirectToAction("../");
+            return RedirectToAction("../Home/Index");
         }
 
         public ActionResult UserLookup(string vp)
@@ -243,6 +243,8 @@ namespace IS_Project.Controllers
             usr.PastoKodas = adr.PastoKodas;
             return View(usr);
         }
+
+
         [HttpPost]
         public ActionResult EditUser(int id, ViewModels.User usr)
         {

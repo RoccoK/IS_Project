@@ -1,0 +1,92 @@
+﻿@model IEnumerable<IS_Project.Models.Registracija>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Registracijų peržiūra</h2>
+
+@using (Html.BeginForm("Index", "RegistrationSubsystem"))
+{
+    <p>
+        <div class="form-inline">
+            <label for="vardas">Daktaras</label>
+            <input type="text" name="vardas" class="form-control"> &nbsp;
+            <label for="data">Data</label>
+            <input type="date" name="data" class="form-control ui-datepicker">
+            <input class="btn btn-success" type="submit" value="Ieškoti">
+        </div>
+    </p>
+}
+<table class="table table-striped datatable">
+    <tr style="background-color: lightblue">
+        <th>
+            @Html.DisplayNameFor(model => model.RegistracijaId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PateikimoData)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Busena)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FkDaktaras.DaktarasNavigation.Vardas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VisitoData)
+        </th>
+        <th style="width: 18%"></th>
+    </tr>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RegistracijaId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PateikimoData)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Busena)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FkDaktaras.DaktarasNavigation.Vardas) &nbsp;,
+                    @Html.DisplayFor(modelItem => item.FkDaktaras.DaktarasNavigation.Pavarde)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VisitoData)
+                </td>
+                <td>
+                    @Html.ActionLink("Redaguoti", "Edit", new { id = item.RegistracijaId }, new { @class = "btn btn-primary action" }) &nbsp;
+                    @Html.ActionLink("Šalinti", "Delete", new { id = item.RegistracijaId }, new { @class = "btn btn-danger action" })
+                </td>
+            </tr>
+        }
+        @*@foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RegistracijaId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PateikimoData)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Busena)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FkDaktaras.DaktarasNavigation.Vardas) &nbsp;,
+                    @Html.DisplayFor(modelItem => item.FkDaktaras.DaktarasNavigation.Pavarde)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VisitoData)
+                </td>
+                <td>
+                    @Html.ActionLink("Redaguoti", "Edit", new { id = item.RegistracijaId }, new { @class = "btn btn-primary action" }) &nbsp;
+                    @Html.ActionLink("Šalinti", "Delete", new { id = item.RegistracijaId }, new { @class = "btn btn-danger action" })
+                </td>
+            </tr>
+        }*@
+    </tbody>
+</table>

@@ -1,0 +1,80 @@
+﻿@model IS_Project.ViewModels.RegistrationView
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Pašalinimas</h2>
+
+<h3>Ar tikrtai norite ištrinti?</h3>
+<div>
+    <h4>RegistrationView</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RegistracijaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegistracijaId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PateikimoData)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PateikimoData)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Busena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Busena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KviestaGreitoji)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KviestaGreitoji)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FkPacientasId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FkPacientasId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FkDaktarasId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FkDaktarasId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VisitoData)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VisitoData)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Šalinti" class="btn btn-default" /> |
+    @Html.ActionLink("Atgal", "Index", "RegistrationSubsystem", new { @class = "btn btn-default" })
+</div>
+    }
+</div>
