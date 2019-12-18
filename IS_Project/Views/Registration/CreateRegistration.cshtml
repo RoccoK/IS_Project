@@ -1,0 +1,48 @@
+﻿@model IS_Project.Models.Registracija
+
+@{
+    ViewBag.Title = "Užsiregistruoti vizitui";
+}
+
+<h2>Užsiregistruoti vizitui</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Užsiregistruoti vizitui</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.FkDaktaras, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.FkDaktarasId, Model.ListDoc, "--------------", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FkDaktarasId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VisitoData, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VisitoData, new { htmlAttributes = new { @class = "form-control datetime-picker" } })
+                @Html.ValidationMessageFor(model => model.VisitoData, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Sukurti" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Atgal", "Index", "Home", new { @class = "btn btn-default" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -44,43 +44,49 @@
                             </ul>
                         }
                     </li>
-                    <li>
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Registracijos posistemė
-                        </a>
+                    @if (Convert.ToInt32(Session["role"]) == 3)
+                    {
+                        <li>
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Registracijos posistemė
+                            </a>
 
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li>@Html.ActionLink("Registracija į apsilankymą", "Create", "RegistrationSubsystem")</li>
-                            <li>@Html.ActionLink("Registracijų peržiūra", "Index", "RegistrationSubsystem")</li>
-                            <li>@Html.ActionLink("Galimų vizitų laikai", "timetable", "RegistrationSubsystem")</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Apsilankymų posistemė
-                        </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li>@Html.ActionLink("Registracija į apsilankymą", "CreateRegistration", "Registration")</li>
+                                <li>@Html.ActionLink("Registracijų peržiūra", "Index", "RegistrationSubsystem")</li>
+                                <li>@Html.ActionLink("Galimų vizitų laikai", "timetable", "RegistrationSubsystem")</li>
+                            </ul>
+                        </li>
+                    }
+                    @if (Convert.ToInt32(Session["role"]) == 2)
+                    {
+                        <li>
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Apsilankymų posistemė
+                            </a>
 
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li>@Html.ActionLink("Pridėti apsilankymą", "CreateVisit", "VisitSubsystem")</li>
-                            <li>@Html.ActionLink("Palatų vizualizacija", "RoomsIndex", "VisitSubsystem")</li>
-                            <li>@Html.ActionLink("Ligonio vizitų istorijos peržiūra", "SearchVisits", "VisitSubsystem")</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Receptų posistemė
-                        </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li>@Html.ActionLink("Pridėti apsilankymą", "CreateVisit", "VisitSubsystem")</li>
+                                <li>@Html.ActionLink("Palatų vizualizacija", "RoomsIndex", "VisitSubsystem")</li>
+                                <li>@Html.ActionLink("Ligonio vizitų istorijos peržiūra", "SearchVisits", "VisitSubsystem")</li>
+                            </ul>
+                        </li>
+                    }
+                        <li>
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Receptų posistemė
+                            </a>
 
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li>@Html.ActionLink("Receptų peržiūros langas", "Index", "RecipeSubsystem")</li>
-                            <li>@Html.ActionLink("Pridėti receptą", "Create", "RecipeSubsystem")</li>
-                            <li>@Html.ActionLink("Ieškoti vartotojo", "SearchPatient", "RecipeSubsystem")</li>
-                            <li>@Html.ActionLink("Tikrinti ar pacientas alergiškas", "CheckAlergy", "RecipeSubsystem")</li>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li>@Html.ActionLink("Receptų peržiūros langas", "Index", "RecipeSubsystem")</li>
+                                <li>@Html.ActionLink("Pridėti receptą", "Create", "RecipeSubsystem")</li>
+                                <li>@Html.ActionLink("Ieškoti vartotojo", "SearchPatient", "RecipeSubsystem")</li>
+                                <li>@Html.ActionLink("Tikrinti ar pacientas alergiškas", "CheckAlergy", "RecipeSubsystem")</li>
 
-                        </ul>
-                    </li>
-                    <li>@Html.ActionLink("Prisijungimas", "Index", "User")</li>
-                </ul>
+                            </ul>
+                        </li>
+                        <li>@Html.ActionLink("Prisijungimas", "Index", "User")</li>
+                    </ul>
             </div>
 
         </div>
@@ -112,7 +118,7 @@
             $(".date-picker").datepicker({ dateFormat: 'yy-mm-dd', defaultDate: new Date() });
             $(".date-picker").datepicker("setDate", "-0d");
             $(".date-picker1").datepicker({ dateFormat: 'yy-mm-dd', defaultDate: new Date() });
-            $(".datetime-picker").datetimepicker({ format: 'Y-m-d h:i' });
+            $(".datetime-picker").datetimepicker({ format: 'yy-m-d h:i', defaultDate: new Date() });
             //$(".time-picker").({ format: 'h:i' });
 
             //Iniciajuojamas datatable (skirtas rikiuoti ieskoti ir panašiai)
